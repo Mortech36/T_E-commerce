@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>Blank Page | AdminKit Demo</title>
+	<title>@yield('admin_page_title')</title>
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -30,88 +30,119 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Main
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+					<li class="sidebar-item {{request()->routeIs('admin')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin')}}">
+                         <i class="align-middle" data-feather="sliders"></i> 
+						 <span class="align-middle">Dashboard</span>
+                        </a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
-					</li>
-
 					<li class="sidebar-header">
-						Tools & Components
+						Category
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-            </a>
+					<li class="sidebar-item {{request()->routeIs('category.create')?'active':''}}">
+						<a class="sidebar-link" href="{{route('category.create')}}">
+                         <i class="align-middle" data-feather="plus"></i> 
+						 <span class="align-middle">Create</span>
+                        </a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-            </a>
+					<li class="sidebar-item {{request()->routeIs('category.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('category.manage')}}">
+                         <i class="align-middle" data-feather="list"></i> 
+						 <span class="align-middle">Manage</span>
+                        </a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
-
 					<li class="sidebar-header">
-						Plugins & Addons
+						Sub Category
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+					<li class="sidebar-item {{request()->routeIs('sub_category.create')?'active':''}}">
+						<a class="sidebar-link" href="{{route('sub_category.create')}}">
+                         <i class="align-middle" data-feather="plus"></i> 
+						 <span class="align-middle">Create</span>
+                        </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('sub_category.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('sub_category.manage')}}">
+                         <i class="align-middle" data-feather="list"></i> 
+						 <span class="align-middle">Manage</span>
+                        </a>
+					</li>
+					<li class="sidebar-header">
+						Attribute
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('product_attribute.create')?'active':''}}">
+						<a class="sidebar-link" href="{{route('product_attribute.create')}}">
+                         <i class="align-middle" data-feather="plus"></i> 
+						 <span class="align-middle">Create</span>
+                        </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('product_attribute.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('product_attribute.manage')}}">
+                         <i class="align-middle" data-feather="list"></i> 
+						 <span class="align-middle">Manage</span>
+                        </a>
+					</li>
+					<li class="sidebar-header">
+						Discount
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('discount.create')?'active':''}}">
+						<a class="sidebar-link" href="{{route('discount.create')}}">
+                         <i class="align-middle" data-feather="plus"></i> 
+						 <span class="align-middle">Create</span>
+                        </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('discount.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('discount.manage')}}">
+                         <i class="align-middle" data-feather="list"></i> 
+						 <span class="align-middle">Manage</span>
+                        </a>
+					</li>
+					<li class="sidebar-header">
+						Product
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('product.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('product.manage')}}">
+                         <i class="align-middle" data-feather="shopping-bag"></i> 
+						 <span class="align-middle">Manage Product</span>
+                        </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('product.manage_review')?'active':''}}">
+						<a class="sidebar-link" href="{{route('product.manage_review')}}">
+                         <i class="align-middle" data-feather="star"></i> 
+						 <span class="align-middle">Manage Review</span>
+                        </a>
+					</li>
+					<li class="sidebar-header">
+						History
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('admin.cart.history')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.cart.history')}}">
+                         <i class="align-middle" data-feather="shopping-cart"></i> 
+						 <span class="align-middle">Cart</span>
+                        </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('admin.order.history')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.order.history')}}">
+                         <i class="align-middle" data-feather="list"></i> 
+						 <span class="align-middle">Order</span>
+                        </a>
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('admin.settings')?'active':''}}">
+						<a class="sidebar-link" href="{{route('admin.settings')}}">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Settings</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
-					</li>
+			
 				</ul>
 
 				<div class="sidebar-cta">
@@ -292,11 +323,7 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
-
-					<h1 class="h3 mb-3">Blank Page</h1>
                     @yield('admin_layout')
-					
-
 				</div>
 			</main>
 

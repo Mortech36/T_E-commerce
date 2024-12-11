@@ -27,23 +27,23 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
         });
         Route::controller(CategoryController::class)->group(function () {
             Route::get('/category/create','index')->name('category.create');
-            Route::get('/category/manage','manage')->name('admin.category.manage');
+            Route::get('/category/manage','manage')->name('category.manage');
         });
         Route::controller(ProductController::class)->group(function () {
-            Route::get('/product/manage','index')->name('admin.product.mange');
-            Route::get('/product/review/manage','manage')->name('admin.product.manage_review');
+            Route::get('/product/manage','index')->name('product.manage');
+            Route::get('/product/review/manage','manage')->name('product.manage_review');
         });
         Route::controller(SubCategoryController::class)->group(function () {
-            Route::get('/subCategory/create','index')->name('admin.sub_category.create');
-            Route::get('/subCategory/manage','manage')->name('admin.sub_category.manage');
+            Route::get('/subCategory/create','index')->name('sub_category.create');
+            Route::get('/subCategory/manage','manage')->name('sub_category.manage');
         });
         Route::controller(ProductAttributeController::class)->group(function () {
-            Route::get('/productattribute/create','index')->name('admin.product_attribute.create');
-            Route::get('/productattribute/manage','manage')->name('admin.product_attribute.manage');
+            Route::get('/productattribute/create','index')->name('product_attribute.create');
+            Route::get('/productattribute/manage','manage')->name('product_attribute.manage');
         });
         Route::controller(ProductDiscountController::class)->group(function () {
-            Route::get('/discount/create','index')->name('admin.discount.create');
-            Route::get('/discount/manage','manage')->name('admin.discount.manage');
+            Route::get('/discount/create','index')->name('discount.create');
+            Route::get('/discount/manage','manage')->name('discount.manage');
         });
     });
 });
