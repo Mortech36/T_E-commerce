@@ -6,7 +6,11 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\ProductController as SellerProductController;
+use App\Http\Controllers\Seller\SellerMainController;
+use App\Http\Controllers\Seller\StoreController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -48,13 +52,42 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
     });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified','rolemanager:customer'])->name('dashboard');
+//Seller Routes
+Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () {
+    Route::prefix('seller')->group(function () {
+        Route::controller(SellerMainController::class)->group(function () {
+            Route::get('/dashboard','index')->name('seller.dashboard');
+            Route::get('/settings','settings')->name('seller.settings');
+            Route::get('/order/history','order_history')->name('seller.order.history');
+            
+        });
+        Route::controller(SellerProductController::class)->group(function () {
+            Route::get('/product/create','index')->name('seller.product.create');
+            Route::get('/product/manage','manage')->name('seller.product.manage');
+        });
+        Route::controller(StoreController::class)->group(function () {
+            Route::get('/store/create','index')->name('seller.store.create');
+            Route::get('/store/manage','manage')->name('seller.store.manage');
+        });
+       
+    });
+});
 
-Route::get('/vendor/dashboard', function () {
-    return view('vendor');
-})->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
+//Customer Routes
+Route::middleware(['auth', 'verified','rolemanager:customer'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::controller(CustomerMainController::class)->group(function () {
+            Route::get('/dashboard','index')->name('customer.profile');
+            Route::get('/order/history','order_history')->name('customer.order.history');
+            Route::get('/settings/payment','payment')->name('customer.payment');
+            Route::get('/affiliate','affiliate')->name('customer.affiliate');
+        });
+       
+    });
+});
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
