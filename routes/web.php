@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Customer\CustomerMainController;
+use App\Http\Controllers\MasterCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\ProductController as SellerProductController;
 use App\Http\Controllers\Seller\SellerMainController;
@@ -32,6 +33,12 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
         Route::controller(CategoryController::class)->group(function () {
             Route::get('/category/create','index')->name('category.create');
             Route::get('/category/manage','manage')->name('category.manage');
+        });
+        Route::controller(MasterCategoryController::class)->group(function () {
+            Route::post('/store/category','storecat')->name('store.cat');
+            Route::get('/category/{id}','showcat')->name('show.cat');
+            Route::put('/category/update/{id}','updatecat')->name('update.cat');
+            Route::delete('/category/delete/{id}','deletecat')->name('delete.cat');
         });
         Route::controller(ProductController::class)->group(function () {
             Route::get('/product/manage','index')->name('product.manage');
