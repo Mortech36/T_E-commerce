@@ -63,7 +63,7 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
 Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () {
     Route::prefix('seller')->group(function () {
         Route::controller(SellerMainController::class)->group(function () {
-            Route::get('/dashboard','index')->name('seller.dashboard');
+            Route::get('/dashboard','index')->name('seller.index');
             Route::get('/settings','settings')->name('seller.settings');
             Route::get('/order/history','order_history')->name('seller.order.history');
             

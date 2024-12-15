@@ -32,11 +32,14 @@ class AuthenticatedSessionController extends Controller
     
         switch ($role) {
             case '0': // Admin
-                return redirect()->intended(route('admin.admin'));
+                return redirect()->intended(route('admin'));
+                break;
             case '1': // Seller
-                return redirect()->intended(route('seller.dashboard'));
+                return redirect()->intended(route('seller.index'));
+                break;
             case '2': // Customer
                 return redirect()->intended(route('customer.profile'));
+                break;
             default:
                 return redirect()->back()->with('error', 'Invalid role assigned to the user.');
         }

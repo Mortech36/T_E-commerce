@@ -33,8 +33,8 @@
 						Main
 					</li>
 
-					<li class="sidebar-item {{request()->routeIs('seller.dashboard')?'active':''}}">
-						<a class="sidebar-link" href="{{route('seller.dashboard')}}">
+					<li class="sidebar-item {{request()->routeIs('seller.index')?'active':''}}">
+						<a class="sidebar-link" href="{{route('seller.index')}}">
                          <i class="align-middle" data-feather="sliders"></i> 
 						 <span class="align-middle">Dashboard</span>
                         </a>
@@ -262,7 +262,10 @@
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
+								<form action="{{route('logout')}}" method="POST">
+									@csrf
+									<input type="submit" class="text-center btn btn-warning" value="Logout">
+								</form>
 							</div>
 						</li>
 					</ul>
