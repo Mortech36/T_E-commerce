@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -19,13 +20,15 @@ class MasterSubCategoryController extends Controller
 
     public function showsubcat($id){
         $subcategory_info = SubCategory::find($id);
-        return view('admin.subcategory.edit', compact('subcategory_info'));
+        $categories = Category::all();
+        return view('admin.sub_category.edit', compact('subcategory_info', 'categories'));
     }
     
-    public function updatecat(Request $request,$id){
+    public function updatesubcat(Request $request,$id){
         $subcategory =SubCategory::findOrFail($id);
         $validate_data=$request->validate([
-            'subcategory_name'=>'unique:categories|max:100|min:5',
+            'subcategory_name'=>'unique:sub_categories|max:100|min:5',
+            'category_id' => 'required|exists:categories,id'
         ]);
         $subcategory->update($validate_data);
         return redirect()->back()->with('message','Sub Category Updated Successfully');

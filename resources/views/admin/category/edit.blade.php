@@ -31,6 +31,7 @@
                   <label for="category_name" class="fw-bold mb-2">Give New Name of Your Category</label>
                   <input type="text" class="form-control" placeholder="Computer" name="category_name" value="{{$category_info->category_name}}">
                   <button type="submit" class="btn btn-primary w-100 mt-2">Update Category</button>
+                  <a href="{{ route('category.manage') }}" class="btn btn-secondary w-100 mt-2">Back</a>
                </form>
             </div>
          </div>
